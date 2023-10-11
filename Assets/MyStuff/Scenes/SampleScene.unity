@@ -138,8 +138,9 @@ GameObject:
   - component: {fileID: 89791594}
   - component: {fileID: 89791593}
   - component: {fileID: 89791597}
-  m_Layer: 0
-  m_Name: Cube
+  - component: {fileID: 89791598}
+  m_Layer: 6
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89791592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.51, z: -0.38}
+  m_LocalPosition: {x: -7.38, y: 0.51, z: 1.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -258,6 +259,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &89791598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89791592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab577f25bf853b4091993422cfbd95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &164186184
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,8 +808,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.983787, y: 1, z: 1}
+  m_Center: {x: -0.008106232, y: 0, z: 0}
 --- !u!23 &833487464
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -886,7 +899,8 @@ GameObject:
   - component: {fileID: 940473194}
   - component: {fileID: 940473195}
   - component: {fileID: 940473196}
-  m_Layer: 0
+  - component: {fileID: 940473197}
+  m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -901,7 +915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940473192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.297, y: 0.87623096, z: -4.074}
+  m_LocalPosition: {x: -3.275, y: 0.83, z: -4.055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -926,6 +940,7 @@ MonoBehaviour:
   doorSpd: 1
   interactDis: 2.7
   open: 0
+  broken: 0
 --- !u!95 &940473195
 Animator:
   serializedVersion: 5
@@ -988,6 +1003,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &940473197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940473192}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9365358, y: 2.9061065, z: 0.14550567}
+  m_Center: {x: -0.9996228, y: -0.010663271, z: -0.0027102232}
 --- !u!1 &1195145118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +1037,8 @@ GameObject:
   - component: {fileID: 1195145120}
   - component: {fileID: 1195145119}
   - component: {fileID: 1195145123}
+  - component: {fileID: 1195145125}
+  - component: {fileID: 1195145124}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1126,6 +1164,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1195145124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195145118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6b1ece64fe4bb4d85951c6e7934e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1195145125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195145118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef389d17109ef7e47b023197b42e75e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kickRange: 3
+  kickStrength: 1
 --- !u!1 &1279883192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1306,6 @@ GameObject:
   - component: {fileID: 1320334642}
   - component: {fileID: 1320334645}
   - component: {fileID: 1320334644}
-  - component: {fileID: 1320334643}
   m_Layer: 0
   m_Name: Knob
   m_TagString: Untagged
@@ -1265,27 +1328,6 @@ Transform:
   m_Father: {fileID: 940473193}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1320334643
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320334641}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1320334644
 MeshRenderer:
   m_ObjectHideFlags: 0
