@@ -30,7 +30,13 @@ public class Door : MonoBehaviour
         float dis = Vector3.Distance(player.position, knob.position);
         bool closeToKnob = dis <= interactDis;
 
-        textPrompt.show(closeToKnob);
+        // Getting in wich side of the door the player is
+        Vector3 toPlayer = transform.position - player.position;
+        Vector3 toKnob = transform.position - knob.position;
+
+        float doorSide = Vector3.Dot(Vector3.Cross(toPlayer, toKnob).normalized, Vector3.up);
+
+        textPrompt.show(closeToKnob, doorSide < 0);
 
         // Only opening the door when close to the knob
         if (closeToKnob && Input.GetKeyDown(KeyCode.E))
