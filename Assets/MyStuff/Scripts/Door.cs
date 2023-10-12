@@ -71,7 +71,7 @@ public class Door : MonoBehaviour, I_Interactable
             broken = true;
             textPrompt.HidePrompt();
             Destroy(transform.Find("Door").GetComponent<Rigidbody>());
-            GetComponent<Animator>().enabled = false;
+            anim.enabled = false;
             GetComponent<BoxCollider>().isTrigger = false;
             rb = this.gameObject.AddComponent<Rigidbody>();
         }
@@ -83,5 +83,11 @@ public class Door : MonoBehaviour, I_Interactable
         // Applying the force
         float mag = 200f * strength * Mathf.Sign(doorSide);
         rb.AddForce(Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.forward * mag);
+    }
+
+    public bool hasTag(string tag)
+    {
+        List<string> tags = new List<string>{"", "Door"};
+        return tags.Contains(tag);
     }
 }

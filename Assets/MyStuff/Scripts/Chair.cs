@@ -18,7 +18,13 @@ public class Chair : MonoBehaviour, I_Interactable
 
     public void Kick(Vector3 dir, float strength = 1f)
     {
-        float mag = 5f * strength;
+        float mag = 20f * strength;
         this.gameObject.GetComponent<Rigidbody>().AddForce(dir * mag);
+    }
+
+    public bool hasTag(string tag)
+    {
+        List<string> tags = new List<string>{"", "Chair"};
+        return tags.Contains(tag);
     }
 }
