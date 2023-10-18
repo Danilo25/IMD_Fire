@@ -5,6 +5,7 @@ using UnityEngine;
 public class Chair : MonoBehaviour, I_Interactable
 {
     [SerializeField] float interactDis = 2.7f;
+    public bool IsSittable = true;
 
     private Transform chair;
     private Transform player;
@@ -29,7 +30,14 @@ public class Chair : MonoBehaviour, I_Interactable
         float angToPlayer = Vector3.Angle(Vector3.forward, Vector3.Normalize(toPlayer));
         float side = -Vector3.Dot(Vector3.Cross(toPlayer, Vector3.forward).normalized, Vector3.up);
 
-        textPrompt.Show(dis <= interactDis, Mathf.Sign(side) * angToPlayer);
+        // IsSittable
+        float minSitAng = 45f;
+        float xAng = transform.eulerAngles.x;
+        float zAng = transform.eulerAngles.z;
+        IsSittable = xAng > -minSitAng && xAng < minSitAng &&
+                     zAng > -minSitAng && zAng < minSitAng;
+
+        textPrompt.Show(dis <= interactDis && IsSittable, Mathf.Sign(side) * angToPlayer);
     }
 
     public void Kick(Vector3 dir, float strength = 1f)

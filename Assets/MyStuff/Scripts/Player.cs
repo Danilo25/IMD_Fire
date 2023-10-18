@@ -35,37 +35,38 @@ public class Player : MonoBehaviour
         // Sitting
         if (Input.GetKeyDown(KeyCode.F))
         {
-            SitInChair(GetNearestInteractable("Chair").transform.position);
+            SitInChair(GetNearestInteractable("Chair"));
         }
     }
 
     #region SittingDown / Chair Interactions
     // Toggles between sitting and getting up a chair
-    void SitInChair(Vector3 chair)
+    void SitInChair(GameObject chair)
     {
-        anim.enabled = true;
-
-        if (sitDown) // getting up
+        if (chair.GetComponent<Chair>().IsSittable)
         {
-            anim.SetBool("SittingDown", !sitDown);
-            anim.Play("GettingUp");
+            Vector3 chairPos = chair.transform.position;
+            anim.enabled = true;
+
+            if (sitDown) // getting up
+            {
+                anim.SetBool("SittingDown", !sitDown);
+                anim.Play("GettingUp");
+            }
+            else { // sitting down
+
+                // Setting the player to a 'sitting down' state
+                coll.isTrigger = true; // in order to not collide with the chair
+                beforeSittingPos = transform.position; // saving the position of the player before sitting down
+                transform.position = chairPos; // teleporting the player to the chair
+                UpdateParentPos(); // in order to play the animation using the player's relative position
+
+                anim.SetBool("SittingDown", !sitDown);
+                anim.Play("SittingDown");
+            }
+
+            sitDown = !sitDown;
         }
-        else { // sitting down
-
-            Debug.Log(transform.position);
-            Debug.Log(chair);
-
-            // Setting the player to a 'sitting down' state
-            coll.isTrigger = true; // in order to not collide with the chair
-            beforeSittingPos = transform.position; // saving the position of the player before sitting down
-            transform.position = chair; // teleporting the player to the chair
-            UpdateParentPos(); // in order to play the animation using the player's relative position
-
-            anim.SetBool("SittingDown", !sitDown);
-            anim.Play("SittingDown");
-        }
-
-        sitDown = !sitDown;
     }
 
     // Reverts player to a 'not sitting down' state
