@@ -17,17 +17,20 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Starting the Game
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SceneManager.LoadScene("Testes");
         }
 
+        // Exiting the Game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
         }
 
+        // Settings menu
         if (Input.GetKeyDown(KeyCode.Q))
         {
             MainMenuObj.SetActive(!MainMenuObj.activeSelf);

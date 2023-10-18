@@ -18,6 +18,7 @@ public class Door : MonoBehaviour, I_Interactable
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         anim.speed = doorSpd;
         knob = transform.Find("Knob").gameObject.transform;
@@ -69,11 +70,10 @@ public class Door : MonoBehaviour, I_Interactable
         if (!broken)
         {
             broken = true;
-            textPrompt.HidePrompt();
-            Destroy(transform.Find("Door").GetComponent<Rigidbody>());
             anim.enabled = false;
             GetComponent<BoxCollider>().isTrigger = false;
-            rb = this.gameObject.AddComponent<Rigidbody>();
+            GetComponent<Rigidbody>().isKinematic = false;
+            textPrompt.HidePrompt();
         }
 
         // Getting the side of the player in relation to the door

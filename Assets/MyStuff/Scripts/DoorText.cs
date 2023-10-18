@@ -8,7 +8,7 @@ public class DoorText : MonoBehaviour
     TextMeshPro text;
     [SerializeField] string openText = "Abrir (E)";
     [SerializeField] string closeText = "Fechar (E)";
-    public string currentText;
+    private string currentText;
     private float initialZPos;
 
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class DoorText : MonoBehaviour
         text.text = currentText;
     }
 
-    // Toggles the visibility of the prompt & Change the side its being displayed at
+    // Toggles the visibility of the prompt & Changes the side its being displayed at
     public void Show(bool near, bool doorSide)
     {
         // visibility

@@ -101,7 +101,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Abrir (E)
+  m_text: 'Abrir (E)
+
+    Chutar (R)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -185,9 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 764c8d0d1da72f84bae2f70bcf536455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openText: Abrir (E)
-  closeText: Fechar (E)
-  currentText: 
+  openText: Abrir (E)<br>Chutar (R)
+  closeText: Fechar (E)<br>Chutar (R)
 --- !u!1 &2255791280968261333
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +201,6 @@ GameObject:
   - component: {fileID: 4738369977526489876}
   - component: {fileID: 8047280401338914780}
   - component: {fileID: 5523008925036932708}
-  - component: {fileID: 6678889951768973997}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -294,33 +294,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.983787, y: 1, z: 1}
   m_Center: {x: -0.008106232, y: 0, z: 0}
---- !u!54 &6678889951768973997
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2255791280968261333}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &5799045491477212718
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +390,7 @@ GameObject:
   - component: {fileID: 3549468534445663813}
   - component: {fileID: 6691481692407008097}
   - component: {fileID: 1092801877254561340}
+  - component: {fileID: 6587394676121347175}
   m_Layer: 6
   m_Name: Door
   m_TagString: Flammable
@@ -440,7 +414,7 @@ Transform:
   - {fileID: 5456405340304848362}
   - {fileID: 6887674528514599723}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1307600935275124813
 MonoBehaviour:
@@ -541,3 +515,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9365358, y: 2.9061065, z: 0.14550567}
   m_Center: {x: -0.9996228, y: -0.010663271, z: -0.0027102232}
+--- !u!54 &6587394676121347175
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703229813301071087}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
