@@ -32,8 +32,8 @@ public class Chair : MonoBehaviour, I_Interactable
 
         // IsSittable
         float minSitAng = 45f;
-        float xAng = transform.eulerAngles.x;
-        float zAng = transform.eulerAngles.z;
+        float xAng = chair.eulerAngles.x;
+        float zAng = chair.eulerAngles.z;
         IsSittable = xAng > -minSitAng && xAng < minSitAng &&
                      zAng > -minSitAng && zAng < minSitAng;
 
