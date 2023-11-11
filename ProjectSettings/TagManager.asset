@@ -13,6 +13,7 @@ TagManager:
   - IMD_area
   - Stairs
   - Settings
+  - Fire
   layers:
   - Default
   - TransparentFX
