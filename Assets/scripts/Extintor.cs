@@ -10,10 +10,10 @@ public class Extintor : MonoBehaviour
     public Transform mao;
 
     public bool canPickUp = true;
-    public float maxDistance = 2.0f; // Distância máxima para pegar o objeto
+    public float maxDistance = 2.0f; // Distï¿½ncia mï¿½xima para pegar o objeto
 
-    public GameObject origemParticulas; // Objeto que contém as partículas
-    public ParticleSystem extintorParticles; // Referência para o sistema de partículas
+    public GameObject origemParticulas; // Objeto que contï¿½m as partï¿½culas
+    public ParticleSystem extintorParticles; // Referï¿½ncia para o sistema de partï¿½culas
 
     public LayerMask objectToExtinguish; // Camada do objeto a ser apagado
 
@@ -23,29 +23,36 @@ public class Extintor : MonoBehaviour
     {
         originalParent = transform.parent;
 
-        // Obtém a referência do sistema de partículas do objeto "origem"
+        // Obtï¿½m a referï¿½ncia do sistema de partï¿½culas do objeto "origem"
         extintorParticles = origemParticulas.GetComponent<ParticleSystem>();
-        extintorParticles.Stop(); // Certifica-se de que as partículas estão desativadas no início
+        //extintorParticles.Stop(); // Certifica-se de que as partï¿½culas estï¿½o desativadas no inï¿½cio
+        var em = extintorParticles.emission;
+        em.enabled = false;
     }
 
     void Update()
     {
+
         if (isBeingCarried)
         {
-            if (Input.GetMouseButton(0)) // Botão esquerdo do mouse está pressionado
+            if (Input.GetMouseButton(0)) // Botï¿½o esquerdo do mouse estï¿½ pressionado
             {
-                extintorParticles.Play(); // Inicia as partículas quando o botão do mouse é pressionado
+                //extintorParticles.Play(); // Inicia as partï¿½culas quando o botï¿½o do mouse ï¿½ pressionado
+                var em = extintorParticles.emission;
+                em.enabled = true;
 
-                // Configura a colisão das partículas com o objeto específico
+                // Configura a colisï¿½o das partï¿½culas com o objeto especï¿½fico
                 var collisionModule = extintorParticles.collision;
                 collisionModule.enabled = true;
                 collisionModule.collidesWith = objectToExtinguish;
             }
             else
             {
-                extintorParticles.Stop(); // Para as partículas quando o botão do mouse é solto
+                //extintorParticles.Stop(); // Para as partï¿½culas quando o botï¿½o do mouse ï¿½ solto
+                var em = extintorParticles.emission;
+                em.enabled = false;
 
-                // Desativa a colisão das partículas quando o botão do mouse é solto
+                // Desativa a colisï¿½o das partï¿½culas quando o botï¿½o do mouse ï¿½ solto
                 var collisionModule = extintorParticles.collision;
                 collisionModule.enabled = false;
             }
@@ -60,13 +67,13 @@ public class Extintor : MonoBehaviour
 
                 if (wasPickedUp)
                 {
-                    // Mostra as partículas quando o extintor é solto
-                    extintorParticles.Play();
+                    // Mostra as partï¿½culas quando o extintor ï¿½ solto
+                    //extintorParticles.Play();
                 }
             }
             else
             {
-                // Atualize a posição do objeto enquanto estiver sendo carregado pelo jogador.
+                // Atualize a posiï¿½ï¿½o do objeto enquanto estiver sendo carregado pelo jogador.
                 Vector3 newPosition = mao.position;
                 transform.position = newPosition;
             }
@@ -79,16 +86,16 @@ public class Extintor : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
-                    // Pegue o objeto quando o jogador pressiona "Q" e está dentro da distância máxima.
+                    // Pegue o objeto quando o jogador pressiona "Q" e estï¿½ dentro da distï¿½ncia mï¿½xima.
                     isBeingCarried = true;
                     canPickUp = false;
                     wasPickedUp = true;
 
-                    // Esconde as partículas quando o extintor é pego
-                    extintorParticles.Stop();
+                    // Esconde as partï¿½culas quando o extintor ï¿½ pego
+                    //extintorParticles.Stop();
 
                     Debug.Log("Pegou o Objeto");
-                    transform.parent = mao; // Torna a mão o pai do objeto
+                    transform.parent = mao; // Torna a mï¿½o o pai do objeto
                     GetComponent<Rigidbody>().isKinematic = true;
                 }
             }
